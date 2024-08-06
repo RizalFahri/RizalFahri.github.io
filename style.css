@@ -1,0 +1,246 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #DDDDDD;
+}
+#nbatas{
+    height: 70px;
+    top: 0;
+    width: 1700px;
+    background-color: #222831;
+    margin: 0 auto;
+    padding: 0 40px 0 40px;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    border-radius: 0 0 25px 25px ;
+}
+.bf {
+    float: left;
+    margin: 0;
+}
+.bf img{
+	width: 50px;
+    margin-right: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.bf p {
+    margin-top: 21px;
+    font-size: 22px;
+    font-family: 'Silkscreen', bold;
+    color: #DDDDDD;
+}
+.bf p:hover {
+    color: #DDDDDD  ;
+    cursor: pointer;
+}
+.bf ul{
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+}
+.bf ul li{
+    display: inline-block;
+}
+.af ul{
+	float: right;
+    margin: 0;
+    margin-top: 5px;
+}
+.af ul li{
+	display: inline-block;
+}
+.af ul li a{
+	display: inline-block;
+    text-decoration: none;
+    margin-right: 20px;
+    color: #DDDDDD;
+    font-family: 'Silkscreen', cursive;
+    height:40px;
+    padding-top: 18px;
+    padding-left: 13px;
+    padding-right: 13px;
+}
+.aktif{
+    background-color: #30475E;
+    color: #fff;
+    border-radius: 20px;
+    transition: all 0.2s ease-out;
+}
+.af ul li a:hover {
+	background-color: #30475E;
+	color: #fff;
+    border-radius: 20px;
+}
+
+#bagisi {
+    margin-top: 220px;
+    display: flex;
+    justify-content: center;  
+  }
+#bagisi img {
+    position: absolute;
+    z-index: 1;
+}
+.bagisi-b{
+    border-radius: 210px;
+}
+#text-container {
+    margin-top: 420px;
+    color: #DDDDDD;
+    text-align: center;
+}
+#text-container .p{
+    font-family: 'Silkscreen', cursive;
+    font-size: 36px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+#text-container p{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 22px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+.fme {
+    display: flex;
+    margin-top: 30px;
+    justify-content: center;
+    height: 40px;
+    width: 60%;
+    margin: 0 auto;
+    border-radius: 15px;
+    background-color: #222831;
+}
+.fme ul {
+    margin-top: 8px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+}
+.fme ul li {
+    margin-right: 60px;
+}
+.fme ul li:hover {
+    cursor: pointer;
+}
+.yt{
+    margin-top: 3px;
+}
+#bagisi2{
+    background-color: #59405C;
+    height: 800px;
+    background: linear-gradient(to bottom, #000, #87556F);
+    padding-top: 100px;
+}
+#abm{
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Silkscreen', cursive;
+    font-size: 28px;
+}
+.bagisi2-db {
+    display: block;
+    width: 70%;
+    margin: 50px auto;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 22px;
+}
+.db-1{
+    float: left;
+    text-align: center;
+    width: 44%;
+    height: 370px;
+    border-radius: 20px;
+    background-color: rgba(75, 93, 103, 0.5);
+    padding-top: 15px;
+    padding-left: 2%;
+    padding-right: 2%;
+    line-height: 34px;
+}
+.db-2{
+    float: right;
+    text-align: center;
+    width: 44%;
+    height: 600px;
+    border-radius: 20px;
+    background-color: rgba(75, 93, 103, 0.5);
+    padding-top: 15px;
+    padding-left: 2%;
+    padding-right: 2%;
+    line-height: 26px;
+}
+.utm {
+    padding-right: 30px;
+}
+#typed-text {
+    font-size: 24px;
+    height: 25px;
+}
+#bagisi3{
+    background-color: #59405C;
+    height: 800px;
+    background: linear-gradient(to bottom, #87556F,#59405C);
+    padding-top: 100px;
+}
+.db-1a{
+    margin: 30px auto;
+    text-align: center;
+    width: 44%;
+    height: 160px;
+    border-radius: 20px;
+    background-color: rgba(75, 93, 103, 0.5);
+    padding-top: 70px;
+    padding-left: 2%;
+    padding-right: 2%;
+    line-height: 34px;
+    font-size: 22px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.dbl{
+    color: #fff;
+}
+#bagisi4{
+    background-color: #59405C;
+    height: 800px;
+    background: linear-gradient(to bottom, #59405C,#000);
+    padding-top: 100px;
+}
+.nbbawah{
+    height: 50px;
+    bottom: 0;
+    width: 1750px;
+    background-color: #222831;
+    margin: 0 auto;
+    padding: 5px 0 0 0;
+    border-radius: 20px 20px 0px 0;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+.nbbawah p {
+    text-align: center;
+    letter-spacing : 10px;
+}
+
+.show-on-scroll {
+    opacity: 0; /* Atur opacity awal menjadi 0 */
+    transition: opacity 1s; /* Atur transisi untuk opacity */
+  }
+  
+  .fade-up {
+    transform: translateY(30px); /* Pindahkan div 20px ke bawah */
+  }
+  
+  .fade-down {
+    transform: translateY(-50px); /* Pindahkan div 20px ke atas */
+  }
+  
+  .show-on-scroll.show {
+    opacity: 1; /* Atur opacity menjadi 1 saat div ditampilkan */
+    transform: translateY(0); /* Hilangkan pindahan div */
+  }
+  
