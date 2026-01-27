@@ -16,7 +16,7 @@ body {
 #nbatas {
     height: auto;
     min-height: 70px;
-    width: 100%; /* Ubah dari 1700px ke 100% */
+    width: 100%; 
     background-color: #222831;
     position: fixed;
     top: 0;
@@ -82,35 +82,60 @@ body {
     transition: all 0.2s ease-out;
 }
 
-/* HERO SECTION (#bagisi) */
+/* === HERO SECTION (#bagisi) === */
 #bagisi {
     position: relative;
-    min-height: 100vh; /* Tinggi minimal satu layar penuh */
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Susun vertikal: Gambar -> Teks */
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-top: 100px; /* Jarak untuk navbar */
+    padding-top: 80px;
     overflow: hidden;
 }
 
-#bagisi img.bg-img {
-    position: absolute;
-    width: 300px;
-    max-width: 80%;
-    z-index: 1;
-    opacity: 0.5;
-    top: 20%;
+/* Wadah pembungkus gambar (Profile Box) */
+.profile-box {
+    position: relative;
+    width: 320px;  /* Lebar area background */
+    height: 320px; /* Tinggi area background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* Jarak ke teks di bawahnya */
 }
 
-#bagisi img.user-img {
+/* Background Abstrak (Lingkaran Belakang) */
+.profile-box .bg-img {
+    position: absolute;
+    width: 100%;   /* Mengisi penuh profile-box */
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: contain; 
+    z-index: 1;
+    opacity: 0.6;
+    animation: spin 30s linear infinite; 
+}
+
+/* Foto Profil User */
+.profile-box .user-img {
     position: relative;
     z-index: 2;
-    width: 200px;
+    width: 200px;  /* Lebar foto */
+    height: 200px; /* WAJIB SAMA dengan width agar bulat sempurna */
     border-radius: 50%;
-    margin-bottom: 20px;
     border: 5px solid #30475E;
+    object-fit: cover; /* KUNCI: Agar foto tidak gepeng */
+    background-color: #222831; 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* Animasi putar */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 #text-container {
@@ -155,7 +180,7 @@ body {
     margin: 0;
     list-style: none;
     display: flex;
-    gap: 30px; /* Jarak antar icon */
+    gap: 30px; 
 }
 
 .fme img {
@@ -170,10 +195,10 @@ body {
 /* GLOBAL SECTION STYLE */
 #bagisi2, #bagisi3, #bagisi4 {
     padding: 80px 20px;
-    min-height: auto; /* Jangan set height mati */
+    min-height: auto; 
 }
 
-.section-title { /* Pengganti ID #abm agar bisa dipakai ulang */
+.section-title { 
     text-align: center;
     font-family: 'Silkscreen', cursive;
     font-size: 32px;
@@ -182,20 +207,14 @@ body {
 }
 
 /* SECTION COLORS */
-#bagisi2 {
-    background: linear-gradient(to bottom, #000, #87556F);
-}
-#bagisi3 {
-    background: linear-gradient(to bottom, #87556F, #59405C);
-}
-#bagisi4 {
-    background: linear-gradient(to bottom, #59405C, #000);
-}
+#bagisi2 { background: linear-gradient(to bottom, #000, #87556F); }
+#bagisi3 { background: linear-gradient(to bottom, #87556F, #59405C); }
+#bagisi4 { background: linear-gradient(to bottom, #59405C, #000); }
 
 /* CONTENT BOXES (ABOUT ME) */
 .bagisi2-db {
-    display: flex; /* Ganti float dengan flex */
-    flex-wrap: wrap; /* Agar turun ke bawah di HP */
+    display: flex; 
+    flex-wrap: wrap; 
     justify-content: center;
     gap: 30px;
     width: 100%;
@@ -208,9 +227,9 @@ body {
     border-radius: 20px;
     padding: 30px;
     line-height: 1.6;
-    flex: 1; /* Membagi lebar rata */
-    min-width: 300px; /* Lebar minimal sebelum turun ke bawah */
-    height: auto; /* Tinggi menyesuaikan isi */
+    flex: 1; 
+    min-width: 300px; 
+    height: auto; 
 }
 
 /* PROJECTS & CONTACT BOX */
@@ -282,12 +301,18 @@ body {
 
     /* Hero Section HP */
     #bagisi {
-        padding-top: 180px; /* Turunkan konten karena navbar jadi tinggi */
+        padding-top: 180px; /* Turunkan konten agar tidak tertutup navbar */
     }
 
-    #bagisi img.bg-img {
-        width: 200px;
-        top: 15%;
+    /* PERBAIKAN: Resize Profile Box di HP agar tidak terlalu besar */
+    .profile-box {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .profile-box .user-img {
+        width: 170px; /* Perkecil sedikit foto profil di HP */
+        height: 170px;
     }
 
     /* Font Size HP */
