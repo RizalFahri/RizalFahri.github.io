@@ -49,7 +49,7 @@
     }
   });
 // Membuat array yang berisi teks yang akan dijadikan efek mengetik
-const texts = ["College Student in Universitas PGRI Yogyakarta | Informatics Engineering"];
+const texts = ["Fresh Graduate in Informatics Engineering | Universitas PGRI Yogyakarta"];
 
 // Mendapatkan elemen HTML tempat teks akan ditampilkan
 const typedText = document.getElementById("typed-text");
@@ -90,4 +90,5 @@ function type() {
 }
 
 // Memulai efek mengetik
+
 setTimeout(type, typingDelay + newTextDelay);
