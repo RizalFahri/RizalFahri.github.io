@@ -168,7 +168,7 @@ body {
     color: #00ADB5;
 }
 
-/* SOCIAL MEDIA ICONS */
+/* === SOCIAL MEDIA ICONS (UPDATE FONT AWESOME) === */
 .fme {
     display: flex;
     justify-content: center;
@@ -189,15 +189,17 @@ body {
     gap: 30px; 
 }
 
-.fme img {
-    width: 30px;
-    transition: transform 0.3s;
+/* KODE BARU UNTUK ICON ONLINE (GANTIKAN .fme img) */
+.fme i {
+    font-size: 30px; /* Pengganti width, mengatur besar icon */
+    color: #DDDDDD;  /* Mengatur warna icon */
+    transition: transform 0.3s, color 0.3s;
 }
 
-.fme img:hover {
-    transform: scale(1.2);
+.fme i:hover {
+    transform: scale(1.2); /* Efek membesar saat ditunjuk */
+    color: #00ADB5;        /* Icon berubah warna jadi biru tosca saat ditunjuk */
 }
-
 /* =========================================
    GLOBAL SECTIONS & BACKGROUNDS
    ========================================= */
@@ -381,3 +383,4 @@ body {
         gap: 15px;
     }
 }
+
