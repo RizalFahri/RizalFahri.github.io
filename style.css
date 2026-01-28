@@ -63,6 +63,8 @@ body {
     padding: 0;
     list-style: none;
     display: flex;
+    padding-bottom: 15px;
+    padding-top: 15px;
 }
 
 .af ul li a {
@@ -338,3 +340,4 @@ body {
         grid-template-columns: repeat(2,1fr);
     }
 }
+
