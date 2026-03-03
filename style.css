@@ -1,38 +1,141 @@
-/* RESET */
+/* --- 1. ROOT VARIABLES --- 
+   Gunakan ini untuk mengatur spasi secara terpusat
+-------------------------------------------------- */
+:root {
+    --primary-color: #7A1CAC;
+    --secondary-color: #AD49E1;
+    --dark-color: #2E073F;
+    --glass-bg: rgba(235, 211, 248, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.55);
+    
+    /* Spasi (Gap) */
+    --container-gap: 100px;     /* Jarak antar section besar */
+    --card-gap: 24px;          /* Jarak antar kartu/grid */
+    --card-padding: 30px;      /* Padding dalam kartu */
+    --section-top-space: 120px; /* Jarak section dari atas agar tidak tertutup navbar */
+}
+
+/* --- 2. RESET & BASE --- 
+-------------------------------------------------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* BASE & STICKY FOOTER SETUP */
 html {
     min-height: 100%;
     background: linear-gradient(135deg, #EBD3F8, #AD49E1);
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: Inter, system-ui, sans-serif;
-    color: #2E073F;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--dark-color);
+    line-height: 1.6;
 }
 
-/* WRAPPER (KUNCI FOOTER NEMPEL BAWAH) */
+/* --- 3. LAYOUT WRAPPER --- 
+-------------------------------------------------- */
 .wrapper {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* GLASS */
+.container {
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.talk {
+    display: inline-flex;       /* Menggunakan flex agar teks mudah ditengah */
+    align-items: center;        /* Vertikal center */
+    justify-content: center;     /* Horizontal center */
+    text-decoration: none;
+    background: #2E073F;
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.talk:hover {
+    background: #7A1CAC;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(122, 28, 172, 0.3);
+}
+
+.profile-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.btn {
+    flex: 1;
+    padding: 12px;
+    border-radius: 14px;
+    border: none;
+    background: #7A1CAC;
+    color: #fff !important;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none; /* Penting untuk tag <a> */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.btn.outline {
+    background: transparent;
+    border: 1px solid #7A1CAC;
+    color: #7A1CAC !important;
+}
+
+/* Efek saat tombol "Copy" diklik */
+.btn.copied {
+    border-color: #4BB543;
+    color: #4BB543 !important;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(122, 28, 172, 0.2);
+}
+
+/* Global Section Spacing */
+section {
+    scroll-margin-top: 100px; 
+    padding-top: 20px; 
+    margin-bottom: var(--container-gap);
+}
+
+section:last-of-type {
+    margin-bottom: 60px;
+}
+
+/* --- 4. GLASSMORPHISM COMPONENT --- 
+-------------------------------------------------- */
 .glass {
-    background: rgba(235, 211, 248, 0.45);
+    background: var(--glass-bg);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     border-radius: 26px;
-    border: 1px solid rgba(255, 255, 255, 0.55);
+    border: 1px solid var(--glass-border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* NAVBAR */
+.card {
+    padding: var(--card-padding);
+}
+
+/* --- 5. NAVBAR --- 
+-------------------------------------------------- */
 .navbar {
     position: fixed;
     top: 20px;
@@ -44,321 +147,266 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 10;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-weight: 800;
+    font-size: 1.2rem;
 }
 
 .navbar nav a {
-    margin: 0 10px;
+    margin: 0 15px;
     text-decoration: none;
     font-size: 14px;
-    color: #2E073F;
-    opacity: 0.75;
+    color: var(--dark-color);
+    font-weight: 500;
+    opacity: 0.7;
+    transition: 0.3s;
 }
 
 .navbar nav a:hover {
     opacity: 1;
-    color: #7A1CAC;
+    color: var(--primary-color);
 }
 
 .talk {
-    background: #2E073F;
+    background: var(--dark-color);
     color: #fff;
     border: none;
-    padding: 10px 18px;
+    padding: 10px 22px;
     border-radius: 16px;
     cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
 }
-/* --- EXPERT AREA ICONS FIXED SIZE --- */
 
+.talk:hover {
+    background: var(--primary-color);
+    transform: scale(1.05);
+}
+
+/* --- 6. HOME GRID & PROFILE --- 
+-------------------------------------------------- */
+#home {
+    /* Tambahan jarak ekstra agar tidak terlalu mepet header saat pertama buka */
+    margin-top: 40px; 
+}
+.grid-home {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: var(--card-gap);
+}
+
+.profile img {
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    object-fit: cover;
+}
+
+.role {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.btn {
+    flex: 1;
+    padding: 12px;
+    border-radius: 14px;
+    border: none;
+    background: var(--primary-color);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: var(--secondary-color);
+}
+
+.btn.outline {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* --- 7. EXPERT AREA (ICONS) --- 
+-------------------------------------------------- */
 .expert-grid-icons {
     display: grid;
-    /* Membuat kolom otomatis, minimal lebar 80px */
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-    gap: 15px; 
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    gap: 12px;
     margin-top: 20px;
 }
 
 .glass-icon-box {
-    background: rgba(235, 211, 248, 0.5);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 16px;
-    
-    /* PENTING: Menentukan tinggi kotak agar seragam */
-    height: 80px; 
-    width: 100%; /* Lebar mengikuti grid */
-    
+    background: rgba(255, 255, 255, 0.2);
+    height: 75px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
+    border-radius: 16px;
+    border: 1px solid var(--glass-border);
+    transition: 0.3s;
 }
 
 .glass-icon-box:hover {
-    background: rgba(255, 255, 255, 0.7);
+    background: #fff;
     transform: translateY(-5px);
-    border-color: #AD49E1;
 }
 
-/* PENTING: Membatasi ukuran gambar/ikon */
 .glass-icon-box img {
-    max-width: 45px;  /* Lebar maksimal ikon 45px */
-    max-height: 45px; /* Tinggi maksimal ikon 45px */
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 2px 2px rgba(46, 7, 63, 0.15)); /* Sedikit bayangan */
+    max-width: 40px;
+    max-height: 40px;
 }
-/* --- RECENT PROJECT STYLING (DENGAN SCROLL) --- */
 
+/* --- 8. RECENT PROJECTS --- 
+-------------------------------------------------- */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: 1fr;
     gap: 15px;
-    margin-top: 15px;
-    
-    /* Tambahkan ini */
-    max-height: 400px;       /* Batasi tinggi maksimal agar muncul scroll */
-    overflow-y: auto;        /* Munculkan scrollbar jika konten melebihi max-height */
-    padding-right: 10px;     /* Ruang agar scrollbar tidak menutupi kartu */
-}
-
-/* Opsional: Mempercantik tampilan Scrollbar (Webkit) */
-.project-grid::-webkit-scrollbar {
-    width: 6px;
-}
-
-.project-grid::-webkit-scrollbar-track {
-    background: rgba(235, 211, 248, 0.2);
-    border-radius: 10px;
-}
-
-.project-grid::-webkit-scrollbar-thumb {
-    background: #AD49E1;
-    border-radius: 10px;
-}
-
-.project-grid::-webkit-scrollbar-thumb:hover {
-    background: #7A1CAC;
+    margin-top: 20px;
+    max-height: 350px;
+    overflow-y: auto;
+    padding-right: 8px;
 }
 
 .project-item {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 15px;
     text-decoration: none;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 12px; /* Radius sedikit dikecilkan agar pas dengan ukuran kecil */
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    transition: all 0.3s ease;
+    padding: 10px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 15px;
 }
 
-.project-item:hover {
-    transform: translateY(-3px);
-    background: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 8px 15px rgba(46, 7, 63, 0.1);
-}
-
-/* THUMBNAIL LEBIH KECIL */
 .project-thumb {
-    width: 100%;
-    height: 120px; /* KUNCI: Tinggi fix 120px agar gambar tidak besar/panjang ke bawah */
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
     overflow: hidden;
-    position: relative;
+    flex-shrink: 0;
 }
 
 .project-thumb img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Gambar akan dipotong rapi mengisi kotak 120px */
-    transition: transform 0.3s ease;
-}
-
-.project-item:hover .project-thumb img {
-    transform: scale(1.05);
-}
-
-.project-info {
-    padding: 10px 12px; /* Padding diperkecil */
+    object-fit: cover;
 }
 
 .project-info h5 {
-    margin: 0;
-    font-size: 14px; /* Font judul diperkecil sedikit */
-    color: #2E073F;
-    font-weight: 700;
-    /* Membatasi judul max 1 baris, kalau kepanjangan jadi titik-titik (...) */
-    white-space: nowrap; 
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 14px;
+    color: var(--dark-color);
 }
 
-.project-info span {
-    font-size: 11px; /* Font kategori diperkecil */
-    color: #2E073F;
-    opacity: 0.7;
-    margin-top: 2px;
-    display: block;
-}
-
-/* CONTAINER */
-.container {
-    flex: 1;
-    max-width: 1200px;
-    margin: auto;
-    padding: 120px 20px 0px;
-}
-
-/* HOME GRID */
-.grid-home {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr 1fr;
-    gap: 24px;
-}
-
-.wide {
-    grid-column: span 2;
-}
-
-/* ABOUT GRID */
+/* --- 9. ABOUT & STATS --- 
+-------------------------------------------------- */
 .grid-about {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 24px;
-}
-
-/* CARD */
-.card {
-    padding: 24px;
-}
-
-/* PROFILE */
-.profile img {
-    width: 100%;
-    border-radius: 20px;
-    margin-bottom: 16px;
-}
-
-.role {
-    font-size: 14px;
-    opacity: 0.75;
-}
-
-/* PROFILE ACTIONS */
-.profile-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 16px;
-}
-
-/* BUTTON */
-.btn {
-    flex: 1;
-    padding: 10px;
-    border-radius: 14px;
-    border: none;
-    background: #7A1CAC;
-    color: #fff;
-    cursor: pointer;
-    transition: 0.2s ease;
-}
-
-.btn:hover {
-    background: #AD49E1;
-}
-
-.btn.outline {
-    background: transparent;
-    border: 1px solid #7A1CAC;
-    color: #7A1CAC;
-}
-
-.btn.outline:hover {
-    background: rgba(122, 28, 172, 0.1);
-}
-
-/* SERVICES */
-.services {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    margin-top: 16px;
-    padding-bottom: 24px;
-}
-
-.service {
-    padding: 20px;
-    border-radius: 18px;
-    background: rgba(235, 211, 248, 0.55);
-    text-align: center;
-    color: #2E073F;
-}
-
-/* ABOUT */
-.about-main h2 {
-    margin: 10px 0;
+    gap: var(--card-gap);
 }
 
 .badge {
     display: inline-block;
-    background: #AD49E1;
+    background: var(--secondary-color);
     color: #fff;
-    padding: 6px 14px;
+    padding: 5px 14px;
     border-radius: 20px;
-    font-size: 12px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
 }
 
-/* STATS */
 .stats {
-    display: flex;
-    gap: 16px;
-    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 25px;
 }
 
 .stats div {
-    background: rgba(235, 211, 248, 0.55);
-    padding: 14px;
+    background: rgba(255,255,255,0.2);
+    padding: 15px;
     border-radius: 18px;
     text-align: center;
-    color: #2E073F;
 }
 
-/* CTA */
-.cta-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.stats strong {
+    display: block;
+    font-size: 1.5rem;
 }
 
-/* FOOTER (STICKY & MINIMAL) */
+.stats span {
+    font-size: 11px;
+    opacity: 0.8;
+}
+
+/* --- 10. SERVICES --- 
+-------------------------------------------------- */
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.service {
+    padding: 20px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* --- 11. FOOTER --- 
+-------------------------------------------------- */
 .footer {
+    margin: 40px auto 20px;
+    width: calc(100% - 40px);
     max-width: 1200px;
-    margin: 0 auto 10px;
-    padding: 12px 20px;
+    padding: 20px;
     text-align: center;
     font-size: 13px;
-    color: #2E073F;
-    opacity: 0.6;
+    opacity: 0.7;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
-    .grid-home,
-    .grid-about {
-        grid-template-columns: 1fr;
+/* --- 12. RESPONSIVE (MOBILE) --- 
+-------------------------------------------------- */
+@media (max-width: 992px) {
+    .grid-home {
+        grid-template-columns: 1fr 1fr;
     }
+}
 
-    .wide {
-        grid-column: auto;
+@media (max-width: 768px) {
+    :root {
+        --container-gap: 60px;
+        --section-top-space: 140px;
     }
 
     .navbar nav {
-        display: none;
+        display: none; /* Sembunyikan menu di mobile atau gunakan burger menu nantinya */
     }
 
-    .container {
-        padding-top: 120px;
+    .grid-home, .grid-about {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }

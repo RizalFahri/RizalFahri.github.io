@@ -38,22 +38,34 @@
             <a href="#contact">Contact</a>
         </nav>
 
-        <button class="talk">Let’s Talk</button>
+        <a href="https://wa.me/62895380604290?text=Halo%20Rizal,%20saya%20tertarik%20bekerja%20sama%20dengan%20Anda!" 
+            class="talk" 
+            target="_blank" 
+            rel="noopener noreferrer">
+            Let’s Talk
+        </a>
     </header>
 
     <main class="container">
 
         <section id="home" class="grid-home">
             <div class="card profile glass">
-                <img src="profile.jpg" alt="Profile">
+                <img src="img/profile.jpg" alt="Profile">
                 <h3>Rizal Fahri 👋</h3>
                 <p class="role">UI/UX Designer | Web Developer | Graphic Designer</p>
                 <p class="desc"><br>
                     Saya adalah seorang lulusan mahasiswa Informatika di Universitas PGRI Yogyakarta dengan IPK 3.93. Saya adalah pribadi yang teliti, adaptif, dan memiliki antusiasme tinggi terhadap dunia teknologi informasi.
                 </p>
                 <div class="profile-actions">
-                    <button class="btn">Send a Message</button>
-                    <button class="btn outline">Copy Email</button>
+                    <a href="mailto:rizalfahriirawan429@gmail.com?subject=Tanya%20Seputar%20Project&body=Halo%20Rizal," 
+                    class="btn" 
+                    title="Kirim Email Langsung">
+                    Send a Message
+                    </a>
+
+                    <button class="btn outline" id="copyEmailBtn" onclick="copyEmail()">
+                        Copy Email
+                    </button>
                 </div>
             </div>
 
@@ -98,7 +110,7 @@
                 <div class="project-grid">
                     <a href="https://klasifikasiulasan-accessbyakai.streamlit.app/" class="project-item">
                         <div class="project-thumb">
-                            <img src="Web Dev.png" alt="Sistem Informasi">
+                            <img src="img/Web Dev.png" alt="Sistem Informasi">
                         </div>
                         <div class="project-info">
                             <h5>Aplikasi Klasifikasi Ulasan</h5>
@@ -107,7 +119,7 @@
                     </a>
                     <a href="https://www.figma.com/design/iWoaDqBZWLG7aKTeN2Ohsk/UI-UX-COMPETITION-%7C-HMPI-UPY?node-id=0-1&t=qcIzhTaEDErrctwC-1" class="project-item">
                         <div class="project-thumb">
-                            <img src="UX.png" alt="UI/UX">
+                            <img src="img/UX.png" alt="UI/UX">
                         </div>
                         <div class="project-info">
                             <h5>Project UI/UX Design</h5>
@@ -116,7 +128,7 @@
                     </a>
                     <a href="https://www.instagram.com/pmbupy/" class="project-item">
                         <div class="project-thumb">
-                            <img src="DesainGrafis.png" alt="Graphic Design">
+                            <img src="img/DesainGrafis.png" alt="Graphic Design">
                         </div>
                         <div class="project-info">
                             <h5>Graphic Designer</h5>
@@ -167,20 +179,18 @@
             <h3>Recent Works</h3>
             <div class="works">
                 <div class="work-item" style="background: rgba(255,255,255,0.1); height: 200px; border-radius: 15px; margin-bottom: 10px;"></div>
-                <div class="work-item" style="background: rgba(255,255,255,0.1); height: 200px; border-radius: 15px; margin-bottom: 10px;"></div>
-                <div class="work-item" style="background: rgba(255,255,255,0.1); height: 200px; border-radius: 15px;"></div>
             </div>
         </section>
 
         <section id="contact" class="card glass">
             <h3>Contact</h3>
-            <p>Email: rizalfahri@email.com</p>
-            <p>Instagram: @rizalfahri</p>
+            <p>Email: rizalfahriirawan429@gmail.com</p>
+            <p>Instagram: @_rizalfahrii</p>
             <p>LinkedIn: Rizal Fahri</p>
+            <p>GitHub: RizalFahri</p>
             
             <div class="cta-card" style="margin-top: 30px;">
-                <h2>Let’s 👋<br>Work Together</h2>
-                <p>Let’s Talk</p>
+                <h2>Let’s Work Together👋</h2>
             </div>
         </section>
 
@@ -190,5 +200,28 @@
         <span>© 2024 Rizal Fahri</span>
     </footer>
 
-</div> </body>
+</div>
+<script>
+function copyEmail() {
+    const email = "rizalfahriirawan429@gmail.com"; // Ganti dengan email Anda
+    
+    navigator.clipboard.writeText(email).then(() => {
+        const btn = document.getElementById('copyEmailBtn');
+        const originalText = btn.innerText;
+        
+        // Ubah tampilan tombol saat berhasil
+        btn.innerText = "Copied! ✅";
+        btn.classList.add('copied');
+        
+        // Kembalikan ke semula setelah 2 detik
+        setTimeout(() => {
+            btn.innerText = originalText;
+            btn.classList.remove('copied');
+        }, 2000);
+    }).catch(err => {
+        console.error('Gagal menyalin: ', err);
+    });
+}
+</script>
+</body>
 </html>
