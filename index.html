@@ -22,6 +22,7 @@
             padding: 0 20px;
         }
     </style>
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
@@ -54,7 +55,7 @@
                 <h3>Rizal Fahri 👋</h3>
                 <p class="role">UI/UX Designer | Web Developer | Graphic Designer</p>
                 <p class="desc"><br>
-                    Saya adalah seorang lulusan mahasiswa Informatika di Universitas PGRI Yogyakarta dengan IPK 3.93. Saya adalah pribadi yang teliti, adaptif, dan memiliki antusiasme tinggi terhadap dunia teknologi informasi.
+                    An Informatics Engineering graduate from Universitas PGRI Yogyakarta (Class of 2026) with a near-perfect GPA of 3.93, completed in just 3.5 years (7 semesters). I am a detail-oriented and adaptive professional with a high enthusiasm for Information Technology, particularly in blending creativity with technical solutions.
                 </p>
                 <div class="profile-actions">
                     <a href="mailto:rizalfahriirawan429@gmail.com?subject=Tanya%20Seputar%20Project&body=Halo%20Rizal," 
@@ -144,22 +145,20 @@
                 <span class="badge">Available for Hire</span>
                 <h2>This is Rizal Fahri 👋</h2>
                 <p>
-                    Aspiring Web Developer | Graphic Designer | UI/UX Enthusiast.
-                    Passionate about blending creativity with technology to craft
-                    visually stunning and user-friendly experiences.
+                    Passionate about the ever-evolving world of Information Technology, I completed my degree in just 3.5 years, driven by a meticulous and adaptive approach to learning. From developing intelligent text classification systems to crafting seamless web interfaces, I am dedicated to delivering high-quality results at the intersection of technology and creativity.
                 </p>
                 <div class="stats">
-                    <div><strong>1+</strong><span>Year Exploring</span></div>
-                    <div><strong>5+</strong><span>Projects</span></div>
-                    <div><strong>5+</strong><span>Designs</span></div>
+                    <div><strong>7</strong><span>Semesters</span></div>
+                    <div><strong>10+</strong><span>Web Projects</span></div>
+                    <div><strong>15+</strong><span>Creative Designs</span></div>
                 </div>
             </div>
             <div class="card glass">
-                <h4>Learning & Creating in the Digital World 🚀</h4>
+                <h4>Learning & Creating in the Digital World 🚀</h4><br>
                 <div class="skill-group">
-                    <div class="skill">Design & Prototyping</div>
-                    <div class="skill">Web Development</div>
-                    <div class="skill">Project & Collaboration</div>
+                    <div class="skill"><strong> Design & Prototyping</strong> Expert in Figma & Adobe Suite for crafting high-fidelity UI/UX.</div>
+                    <div class="skill"><strong>Web Development</strong> Proficient in building responsive sites using PHP (Laravel/CI), JS, and modern CSS.</div>
+                    <div class="skill"><strong>Project & Collaboration</strong> Strong teamwork and project management skills.</div>
                 </div>
             </div>
         </section>
@@ -182,15 +181,64 @@
             </div>
         </section>
 
-        <section id="contact" class="card glass">
-            <h3>Contact</h3>
-            <p>Email: rizalfahriirawan429@gmail.com</p>
-            <p>Instagram: @_rizalfahrii</p>
-            <p>LinkedIn: Rizal Fahri</p>
-            <p>GitHub: RizalFahri</p>
-            
-            <div class="cta-card" style="margin-top: 30px;">
-                <h2>Let’s Work Together👋</h2>
+        <section id="contact">
+            <div class="card glass">
+                <div class="contact-header">
+                    <h3>Contact Me</h3>
+                    <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.</p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-item-box">
+                        <div class="contact-icon">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <div class="contact-text">
+                            <span>Email</span>
+                            <strong>rizalfahriirawan429@gmail.com</strong>
+                        </div>
+                        <button class="copy-small" onclick="copyText('rizalfahriirawan429@gmail.com', this)">Copy</button>
+                    </div>
+
+                    <a href="https://instagram.com/_rizalfahrii" target="_blank" rel="noopener" class="contact-item-box link">
+                        <div class="contact-icon">
+                            <i data-lucide="instagram"></i>
+                        </div>
+                        <div class="contact-text">
+                            <span>Instagram</span>
+                            <strong>@_rizalfahrii</strong>
+                        </div>
+                    </a>
+
+                    <a href="https://linkedin.com/in/rizal-fahri" target="_blank" rel="noopener" class="contact-item-box link">
+                        <div class="contact-icon">
+                            <i data-lucide="linkedin"></i>
+                        </div>
+                        <div class="contact-text">
+                            <span>LinkedIn</span>
+                            <strong>Rizal Fahri</strong>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/RizalFahri" target="_blank" rel="noopener" class="contact-item-box link">
+                        <div class="contact-icon">
+                            <i data-lucide="github"></i>
+                        </div>
+                        <div class="contact-text">
+                            <span>GitHub</span>
+                            <strong>RizalFahri</strong>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="cta-footer">
+                    <h2>Let’s Work Together👋</h2>
+                    <a href="mailto:rizalfahriirawan429@gmail.com?subject=Tanya%20Seputar%20Project&body=Halo%20Rizal," 
+                    class="talk" 
+                    title="Kirim Email Langsung">
+                    Send a Message
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -222,6 +270,21 @@ function copyEmail() {
         console.error('Gagal menyalin: ', err);
     });
 }
+// Inisialisasi ikon Lucide
+    lucide.createIcons();
+
+    // Fungsi Copy Text (Tetap sama)
+    function copyText(text, btn) {
+        navigator.clipboard.writeText(text).then(() => {
+            const originalText = btn.innerText;
+            btn.innerText = "Copied!";
+            btn.style.background = "#4BB543";
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.style.background = "";
+            }, 2000);
+        });
+    }
 </script>
 </body>
 </html>
