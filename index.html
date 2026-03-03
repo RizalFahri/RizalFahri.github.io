@@ -1,112 +1,194 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Rizal Fahri | Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Silkscreen&display=swap" rel="stylesheet">
-    <title>PORTOFOLIO | RIZAL FAHRI IRAWAN</title>
+    
+    <style>
+        /* Tambahan CSS agar transisi antar bagian lebih halus */
+        html {
+            scroll-behavior: smooth;
+        }
+        section {
+            padding-top: 80px; /* Jarak agar tidak tertutup navbar glass */
+            margin-bottom: 40px;
+        }
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+    </style>
 </head>
 <body>
-    <div id="nbatas">
-        <div class="container-nav">
-            <div class="bf">
-                <ul>
-                    <li><img src="img/logo.jpg" alt="Logo"></li>
-                    <li><p>Rizal Fahri</p></li>
-                </ul>
-            </div>
-            <div class="af">
-                <ul>
-                    <li><a href="#bagisi">HOME</a></li>
-                    <li><a href="#bagisi2">ABOUT ME</a></li>
-                    <li><a href="#bagisi3">PROJECT</a></li>
-                    <li><a href="#bagisi4">CONTACT</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
 
-    <div id="bagisi">
-        <div class="profile-box">
-            <img src="img/gambar2.png" class="bg-img" alt="Background Decoration">
-            <img class="user-img show-on-scroll" src="img/gambar1.png" alt="Rizal Fahri">
-        </div>
+<div class="wrapper">
 
-        <div id="text-container">
-            <p class="p">RIZAL FAHRI IRAWAN</p>
-            <p id="typed-text"></p>
-            <div class="fme show-on-scroll">
-                <ul>
-                    <li><a href="https://www.instagram.com/_rizalfahrii/" target="_blank"><img src="img/instagram.png"></a></li>
-                    <li><a href="#"><img src="img/youtube.png" class="yt"></a></li>
-                    <li><a href="#"><img src="img/tik-tok.png"></a></li>
-                    <li><a href="https://github.com/RizalFahri/" target="_blank"><img src="img/github-sign.png"></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <header class="navbar glass">
+        <div class="logo">Rizal Fahri</div>
 
-    <div id="bagisi2">
-        <p class="section-title">About Me</p>
-        <div class="bagisi2-db show-on-scroll">
-            <div class="db-1">
-                <p>Hi everyone, welcome to my portofolio website. My name is Rizal Fahri Irawna, born on 19 January 2004 in Wonosobo.
-                    I am an active, hard-working, and enthusiastic individual in the field of information technology. 
-                    I possess the ability to work both in a team and independently, 
-                    and I always strive to complete tasks with quality and in a timely manner. 
-                    I also have a good command of the English language. 
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#works">Works</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <button class="talk">Let’s Talk</button>
+    </header>
+
+    <main class="container">
+
+        <section id="home" class="grid-home">
+            <div class="card profile glass">
+                <img src="img/profile.jpg" alt="Profile">
+                <h3>Rizal Fahri 👋</h3>
+                <p class="role">UI/UX Designer | Web Developer | Graphic Designer</p>
+                <p class="desc"><br>
+                    Saya adalah seorang lulusan mahasiswa Informatika di Universitas PGRI Yogyakarta dengan IPK 3.93. Saya adalah pribadi yang teliti, adaptif, dan memiliki antusiasme tinggi terhadap dunia teknologi informasi.
                 </p>
+                <div class="profile-actions">
+                    <button class="btn">Send a Message</button>
+                    <button class="btn outline">Copy Email</button>
+                </div>
             </div>
-            <div class="db-2">
-                <p>I have experience in website development, management, and maintenance, supported by a background in communication and information technology. I am accustomed to handling content updates, managing website features, and ensuring system functionality and performance. My expertise includes UI/UX design processes such as wireframing, mockups, and user experience planning.</p> 
-                <p>In addition, I specialize in graphic design, with experience in creating visual assets for digital platforms, including website visuals, social media content, and promotional materials.</p>
-            </div>
-        </div>
-    </div>
 
-    <div id="bagisi3">
-        <p class="section-title">PROJECT</p>
-        
-        <div class="project-container show-on-scroll">
-            <div class="project-card">
-                <img src="img/p1.jpg" alt="Project 1">
+            <div class="card glass">
+                <h4>My Expert Area</h4>
+                <div class="expert-grid-icons">
+                    <div class="glass-icon-box" title="Figma">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Figma">
+                    </div>
+                    <div class="glass-icon-box" title="Adobe Photoshop">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="Photoshop">
+                    </div>
+                    <div class="glass-icon-box" title="Adobe Illustrator">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg" alt="Illustrator">
+                    </div>
+                    <div class="glass-icon-box" title="HTML5">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/HTML5_Badge.svg" alt="HTML5">
+                    </div>
+                    <div class="glass-icon-box" title="CSS3">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS3">
+                    </div>
+                    <div class="glass-icon-box" title="JavaScript">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg" alt="JavaScript">
+                    </div>
+                    <div class="glass-icon-box" title="PHP">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP">
+                    </div>
+                    <div class="glass-icon-box" title="CodeIgniter">
+                        <img src="https://cdn.worldvectorlogo.com/logos/codeigniter.svg" alt="CodeIgniter">
+                    </div>
+                    <div class="glass-icon-box" title="Laravel">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Laravel.svg" alt="Laravel">
+                    </div>
+                    <div class="glass-icon-box" title="Bootstrap">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg" alt="Bootstrap">
+                    </div>
+                </div>
             </div>
-            <div class="project-card">
-                <img src="img/p2.jpg" alt="Project 2">
-            </div>
-            <div class="project-card">
-                <img src="img/p3.jpg" alt="Project 3">
-            </div>
-            <div class="project-card">
-                <img src="img/p4.jpg" alt="Project 4">
-            </div>
-            <div class="project-card">
-                <img src="img/p5.jpg" alt="Project 5">
-            </div>
-            <div class="project-card">
-                <img src="img/p6.jpg" alt="Project 6">
-            </div>
-        </div>
-        
-        <!-- <div class="db-1a show-on-scroll" style="margin-top: 30px; background: transparent; padding: 10px;">
-            <p>More on Instagram: <a class="dbl" href="https://www.instagram.com/_rizalfahrii/" target="_blank">@_rizalfahrii</a></p>
-        </div> -->
-    </div>
 
-    <div id="bagisi4">
-        <p class="section-title">CONTACT</p>
-        <div class="db-1a show-on-scroll">
-            <p>Email: rizalfahriirawan429@gmail.com</p>
-        </div>
-    </div>
+            <div class="card glass">
+                <h4>Recent Project</h4>
+                <div class="project-grid">
+                    <a href="https://klasifikasiulasan-accessbyakai.streamlit.app/" class="project-item">
+                        <div class="project-thumb">
+                            <img src="img/Web Dev.png" alt="Sistem Informasi">
+                        </div>
+                        <div class="project-info">
+                            <h5>Aplikasi Klasifikasi Ulasan</h5>
+                            <span>Website Development</span>
+                        </div>
+                    </a>
+                    <a href="https://www.figma.com/design/iWoaDqBZWLG7aKTeN2Ohsk/UI-UX-COMPETITION-%7C-HMPI-UPY?node-id=0-1&t=qcIzhTaEDErrctwC-1" class="project-item">
+                        <div class="project-thumb">
+                            <img src="img/UX.png" alt="UI/UX">
+                        </div>
+                        <div class="project-info">
+                            <h5>Project UI/UX Design</h5>
+                            <span>Event Permifest 2024/2025</span>
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/pmbupy/" class="project-item">
+                        <div class="project-thumb">
+                            <img src="img/DesainGrafis.png" alt="Graphic Design">
+                        </div>
+                        <div class="project-info">
+                            <h5>Graphic Designer</h5>
+                            <span>Tim Media Kreatif - PMB UPY</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
 
-    <div class="nbbawah">
-        <p>COPYRIGHT 2026 | RizalFahri</p>
-    </div>
-    <script src="uhuy.js"></script>
-</body>
+        <section id="about" class="grid-about">
+            <div class="card glass about-main">
+                <span class="badge">Available for Hire</span>
+                <h2>This is Rizal Fahri 👋</h2>
+                <p>
+                    Aspiring Web Developer | Graphic Designer | UI/UX Enthusiast.
+                    Passionate about blending creativity with technology to craft
+                    visually stunning and user-friendly experiences.
+                </p>
+                <div class="stats">
+                    <div><strong>1+</strong><span>Year Exploring</span></div>
+                    <div><strong>5+</strong><span>Projects</span></div>
+                    <div><strong>5+</strong><span>Designs</span></div>
+                </div>
+            </div>
+            <div class="card glass">
+                <h4>Learning & Creating in the Digital World 🚀</h4>
+                <div class="skill-group">
+                    <div class="skill">Design & Prototyping</div>
+                    <div class="skill">Web Development</div>
+                    <div class="skill">Project & Collaboration</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="card glass">
+            <h3>Services Offered</h3>
+            <div class="services">
+                <div class="service">UI/UX Design</div>
+                <div class="service">Website Development</div>
+                <div class="service">Front-End Development</div>
+                <div class="service">Landing Page</div>
+                <div class="service">Graphic Designer</div>
+            </div>
+        </section>
+
+        <section id="works" class="card glass">
+            <h3>Recent Works</h3>
+            <div class="works">
+                <div class="work-item" style="background: rgba(255,255,255,0.1); height: 200px; border-radius: 15px; margin-bottom: 10px;"></div>
+                <div class="work-item" style="background: rgba(255,255,255,0.1); height: 200px; border-radius: 15px; margin-bottom: 10px;"></div>
+                <div class="work-item" style="background: rgba(255,255,255,0.1); height: 200px; border-radius: 15px;"></div>
+            </div>
+        </section>
+
+        <section id="contact" class="card glass">
+            <h3>Contact</h3>
+            <p>Email: rizalfahri@email.com</p>
+            <p>Instagram: @rizalfahri</p>
+            <p>LinkedIn: Rizal Fahri</p>
+            
+            <div class="cta-card" style="margin-top: 30px;">
+                <h2>Let’s 👋<br>Work Together</h2>
+                <p>Let’s Talk</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer glass">
+        <span>© 2024 Rizal Fahri</span>
+    </footer>
+
+</div> </body>
 </html>
