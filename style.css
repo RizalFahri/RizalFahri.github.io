@@ -170,20 +170,33 @@ section:last-of-type {
     color: var(--primary-color);
 }
 
-.talk {
-    background: var(--dark-color);
-    color: #fff;
-    border: none;
-    padding: 10px 22px;
-    border-radius: 16px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: 0.3s;
+/* --- HEADER ACTIONS & CV BUTTON --- */
+.header-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
 }
 
-.talk:hover {
+.btn-cv {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background: transparent;
+    color: var(--primary-color);
+    border: 1.5px solid var(--primary-color);
+    padding: 8px 18px;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.btn-cv:hover {
     background: var(--primary-color);
-    transform: scale(1.05);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(122, 28, 172, 0.3);
 }
 
 /* --- 6. HOME GRID & PROFILE --- 
@@ -210,24 +223,6 @@ section:last-of-type {
     font-weight: 600;
     color: var(--primary-color);
     margin-bottom: 8px;
-}
-
-.profile-actions {
-    display: flex;
-    gap: 12px;
-    margin-top: 20px;
-}
-
-.btn {
-    flex: 1;
-    padding: 12px;
-    border-radius: 14px;
-    border: none;
-    background: var(--primary-color);
-    color: #fff;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
 }
 
 .btn:hover {
@@ -470,6 +465,17 @@ section:last-of-type {
 .cta-footer h2 {
     margin-bottom: 20px;
 }
+.work-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.work-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-color: rgba(0, 210, 255, 0.5) !important;
+}
+
+
 
 /* Responsive */
 @media (max-width: 480px) {
