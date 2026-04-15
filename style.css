@@ -30,13 +30,21 @@ body {
     font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
     color: var(--text-main);
     line-height: 1.6;
-    background-image: 
-        radial-gradient(circle at 15% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 50% 100%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
-    background-attachment: fixed;
     overflow-x: hidden;
 }
+
+/* --- PARALLAX BACKGROUND ORBS --- */
+.parallax-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -3;
+    pointer-events: none;
+    opacity: 0.8;
+}
+.orb-1 { width: 50vw; height: 50vw; background: rgba(168, 85, 247, 0.2); top: -10%; left: -10%; }
+.orb-2 { width: 60vw; height: 60vw; background: rgba(236, 72, 153, 0.15); top: 30%; right: -20%; }
+.orb-3 { width: 40vw; height: 40vw; background: rgba(56, 189, 248, 0.15); bottom: -10%; left: 20%; }
 
 /* Typography Enhancements */
 h1, h2, h3, h4, h5 {
@@ -258,11 +266,7 @@ section { scroll-margin-top: 140px; margin-bottom: var(--container-gap); }
 }
 @media (max-width: 768px) {
     :root { --container-gap: 40px; }
-    body { background-attachment: scroll !important; }
-    body::before, body::after, html::before {
-        animation: none !important; /* Meringankan beban render saat scroll di HP */
-        filter: blur(70px) !important;
-    }
+    .parallax-orb { filter: blur(70px); opacity: 0.5; }
     .navbar { padding: 12px 20px; width: calc(100% - 30px); border-radius: 100px; }
     .menu-toggle { display: flex; align-items: center; justify-content: center; }
     .nav-wrapper {

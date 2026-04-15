@@ -32,6 +32,11 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+<!-- Parallax Orbs -->
+<div class="rellax parallax-orb orb-1" data-rellax-speed="-4"></div>
+<div class="rellax parallax-orb orb-2" data-rellax-speed="5"></div>
+<div class="rellax parallax-orb orb-3" data-rellax-speed="-2"></div>
+
 <!-- TsParticles Constellation Background -->
 <div id="tsparticles" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none;"></div>
 
@@ -398,6 +403,9 @@
 <!-- Vanilla-Tilt for 3D Holographic Cards -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
 
+<!-- Rellax for Background Parallax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.12.1/rellax.min.js"></script>
+
 <!-- tsParticles for Star Constellation Background -->
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 
@@ -420,8 +428,17 @@
             glare: true,
             "max-glare": 0.15,
         });
-
     }
+
+    // Rellax Parallax
+    var rellax = new Rellax('.rellax', {
+        speed: -2,
+        center: false,
+        wrapper: null,
+        round: true,
+        vertical: true,
+        horizontal: false
+    });
 
     // Initialize tsParticles Constellation only on desktop to guarantee smooth scrolling on mobile
     if (window.innerWidth > 768) {
