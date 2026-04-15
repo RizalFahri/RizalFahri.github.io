@@ -141,7 +141,9 @@ section { scroll-margin-top: 140px; margin-bottom: var(--container-gap); }
 .menu-toggle { display: none; background: transparent; border: none; color: #fff; cursor: pointer; font-size: 24px; }
 
 /* --- 6. HOME --- */
-.grid-home { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: var(--card-gap); align-items: start; }
+.grid-home { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: var(--card-gap); align-items: stretch; }
+.profile { grid-row: span 2; height: 100%; }
+.cta-home { grid-column: span 2; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
 .profile img { width: 100%; border-radius: 50%; aspect-ratio: 1; object-fit: cover; margin-bottom: 20px; border: 4px solid rgba(255,255,255,0.1); padding: 4px; transition: transform 0.5s ease; }
 .profile:hover img { transform: scale(1.05) rotate(2deg); border-color: rgba(168,85,247,0.5); }
 .role { font-size: 14px; font-weight: 600; color: var(--primary-color); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
@@ -249,7 +251,11 @@ section { scroll-margin-top: 140px; margin-bottom: var(--container-gap); }
 .footer { margin: 40px auto 20px; width: calc(100% - 40px); max-width: 1200px; padding: 20px; text-align: center; font-size: 14px; color: var(--text-muted); border-radius: 100px; }
 
 /* --- 13. RESPONSIVE --- */
-@media (max-width: 992px) { .grid-home { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 992px) { 
+    .grid-home { grid-template-columns: 1fr 1fr; }
+    .profile { grid-row: span 1; }
+    .cta-home { grid-column: span 2; }
+}
 @media (max-width: 768px) {
     :root { --container-gap: 40px; }
     body { background-attachment: scroll !important; }
@@ -273,6 +279,7 @@ section { scroll-margin-top: 140px; margin-bottom: var(--container-gap); }
     .header-actions { flex-direction: column; width: 100%; }
     .header-actions .btn-cv, .header-actions .talk { width: 100%; }
     .grid-home, .grid-about { grid-template-columns: 1fr; }
+    .cta-home { grid-column: span 1; }
     .stats { grid-template-columns: 1fr 1fr 1fr; }
     .profile img { max-width: 250px; margin: 0 auto 20px; display: block; }
 }
