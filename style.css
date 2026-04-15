@@ -63,8 +63,8 @@ h1, h2, h3, h4, h5 {
 }
 
 /* --- 3. LAYOUT WRAPPER --- */
-.wrapper { min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; width: 100%; }
-.container { flex: 1; max-width: 1200px; margin: 0 auto; padding: 140px 20px 0; }
+.wrapper { min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; width: 100%; position: relative; }
+.container { flex: 1; max-width: 1200px; margin: 0 auto; padding: 140px 20px 0; position: relative; z-index: 10; }
 
 /* Global Buttons */
 .talk, .btn {
