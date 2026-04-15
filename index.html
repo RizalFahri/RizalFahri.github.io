@@ -364,14 +364,12 @@
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    // Auto-attach animation attributes dynamically for extreme WOW factor
-    document.querySelectorAll('.card, .service, .project-item, .contact-item-box, h2, h3, h4').forEach((el, i) => {
+    // Auto-attach animation attributes dynamically for main sections only
+    document.querySelectorAll('section').forEach((el, i) => {
         if (!el.hasAttribute('data-aos')) {
-            // Terbang silang: Kiri atau Kanan secara bergantian
+            // Terbang silang: Kiri atau Kanan secara bergantian per blok besar (section)
             const direction = (i % 2 === 0) ? 'fade-right' : 'fade-left';
             el.setAttribute('data-aos', direction);
-            // Stagger animation based on elements to create a wave effect
-            el.setAttribute('data-aos-delay', (i % 3) * 50); // Dikurangi menjadi 50 agar tidak terasa delay terlalu lama dari pinggir
         }
     });
 
