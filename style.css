@@ -252,6 +252,11 @@ section { scroll-margin-top: 140px; margin-bottom: var(--container-gap); }
 @media (max-width: 992px) { .grid-home { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 768px) {
     :root { --container-gap: 40px; }
+    body { background-attachment: scroll !important; }
+    body::before, body::after, html::before {
+        animation: none !important; /* Meringankan beban render saat scroll di HP */
+        filter: blur(70px) !important;
+    }
     .navbar { padding: 12px 20px; width: calc(100% - 30px); border-radius: 100px; }
     .menu-toggle { display: flex; align-items: center; justify-content: center; }
     .nav-wrapper {

@@ -412,9 +412,10 @@
 
     }
 
-    // Initialize tsParticles Constellation
-    tsParticles.load("tsparticles", {
-      fpsLimit: 60,
+    // Initialize tsParticles Constellation only on desktop to guarantee smooth scrolling on mobile
+    if (window.innerWidth > 768) {
+        tsParticles.load("tsparticles", {
+          fpsLimit: 60,
       particles: {
         color: { value: "#ffffff" },
         links: {
@@ -452,6 +453,7 @@
       },
       detectRetina: true
     });
+    }
 </script>
 
 </body>
