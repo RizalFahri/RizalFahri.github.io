@@ -10,21 +10,10 @@
     <meta name="description" content="Portfolio Rizal Fahri - UI/UX Designer, Web Developer, Graphic Designer">
     <link rel="canonical" href="https://rizalfahri.github.io">
     
-    <style>
-        /* Tambahan CSS agar transisi antar bagian lebih halus */
-        html {
-            scroll-behavior: smooth;
-        }
-        section {
-            padding-top: 80px; /* Jarak agar tidak tertutup navbar glass */
-            margin-bottom: 40px;
-        }
-        .wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -40,36 +29,39 @@
     }
     </script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+<!-- TsParticles Constellation Background -->
+<div id="tsparticles" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none;"></div>
 
 <div class="wrapper">
 
     <header class="navbar glass">
-        <div class="logo">Rizal Fahri</div>
+        <div class="logo text-gradient">Rizal Fahri</div>
 
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#works">Works</a>
-            <a href="#contact">Contact</a>
-        </nav>
-        
-        <!-- <a href="https://wa.me/62895380604290?text=Halo%20Rizal,%20saya%20tertarik%20bekerja%20sama%20dengan%20Anda!" 
-            class="talk" 
-            target="_blank" 
-            rel="noopener noreferrer">
-            Let’s Talk
-        </a> -->
-        <div class="header-actions">
-            <a href="https://drive.google.com/file/d/1t-obPDMYSsohDM541l-OSlqkUqWXRCh9/view?usp=sharing" class="btn-cv" target="_blank" rel="noopener noreferrer">Download CV</a>            
-            <a href="https://wa.me/62895380604290?text=Halo%20Rizal,%20saya%20tertarik%20bekerja%20sama%20dengan%20Anda!" 
-                class="talk" 
-                target="_blank" 
-                rel="noopener noreferrer">
-                Let’s Talk
-            </a>
+        <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Menu">
+            <i data-lucide="menu"></i>
+        </button>
+
+        <div class="nav-wrapper" id="nav-wrapper">
+            <nav>
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#works" class="nav-link">Works</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="https://drive.google.com/file/d/1t-obPDMYSsohDM541l-OSlqkUqWXRCh9/view?usp=sharing" class="btn-cv nav-link" target="_blank" rel="noopener noreferrer">Download CV</a>            
+                <a href="https://wa.me/62895380604290?text=Halo%20Rizal,%20saya%20tertarik%20bekerja%20sama%20dengan%20Anda!" 
+                    class="talk nav-link" 
+                    target="_blank" 
+                    rel="noopener noreferrer">
+                    Let’s Talk
+                </a>
+            </div>
         </div>
     </header>
 
@@ -78,8 +70,8 @@
         <section id="home" class="grid-home">
             <div class="card profile glass">
                 <img src="img/profile.jpg" alt="Profile">
-                <h3>Rizal Fahri 👋</h3>
-                <p class="role">UI/UX Designer | Web Developer | Graphic Designer</p>
+                <h3 class="text-gradient">Rizal Fahri 👋</h3>
+                <p class="role"><span id="typed-role"></span></p>
                 <p class="desc"><br>
                     An Informatics Engineering graduate from Universitas PGRI Yogyakarta (Class of 2026) with a near-perfect GPA of 3.93, completed in just 3.5 years (7 semesters). I am a detail-oriented and adaptive professional with a high enthusiasm for Information Technology, particularly in blending creativity with technical solutions.
                 </p>
@@ -97,7 +89,7 @@
             </div>
 
             <div class="card glass">
-                <h4>My Expert Area</h4>
+                <h4 class="text-gradient">My Expert Area</h4>
                 <div class="expert-grid-icons">
                     <div class="glass-icon-box" title="Figma">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Figma">
@@ -133,7 +125,7 @@
             </div>
 
             <div class="card glass">
-                <h4>Recent Project</h4>
+                <h4 class="text-gradient">Recent Project</h4>
                 <div class="project-grid">
                     <a href="https://klasifikasiulasan-accessbyakai.streamlit.app/" class="project-item">
                         <div class="project-thumb">
@@ -169,7 +161,7 @@
         <section id="about" class="grid-about">
             <div class="card glass about-main">
                 <span class="badge">Available for Hire</span>
-                <h2>This is Rizal Fahri 👋</h2>
+                <h2 class="text-gradient">This is Rizal Fahri 👋</h2>
                 <p>
                     Passionate about the ever-evolving world of Information Technology, I completed my degree in just 3.5 years, driven by a meticulous and adaptive approach to learning. From developing intelligent text classification systems to crafting seamless web interfaces, I am dedicated to delivering high-quality results at the intersection of technology and creativity.
                 </p>
@@ -263,7 +255,7 @@
 
                     <a href="https://instagram.com/_rizalfahrii" target="_blank" rel="noopener" class="contact-item-box link">
                         <div class="contact-icon">
-                            <i data-lucide="instagram"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                         </div>
                         <div class="contact-text">
                             <span>Instagram</span>
@@ -273,7 +265,7 @@
 
                     <a href="https://linkedin.com/in/rizal-fahri" target="_blank" rel="noopener" class="contact-item-box link">
                         <div class="contact-icon">
-                            <i data-lucide="linkedin"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
                         </div>
                         <div class="contact-text">
                             <span>LinkedIn</span>
@@ -283,7 +275,7 @@
 
                     <a href="https://github.com/RizalFahri" target="_blank" rel="noopener" class="contact-item-box link">
                         <div class="contact-icon">
-                            <i data-lucide="github"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
                         </div>
                         <div class="contact-text">
                             <span>GitHub</span>
@@ -293,7 +285,7 @@
                 </div>
 
                 <div class="cta-footer">
-                    <h2>Let’s Work Together👋</h2>
+                    <h2 class="text-gradient">Let’s Work Together👋</h2>
                     <a href="mailto:rizalfahriirawan429@gmail.com?subject=Tanya%20Seputar%20Project&body=Halo%20Rizal," 
                     class="talk" 
                     title="Kirim Email Langsung">
@@ -311,30 +303,30 @@
 
 </div>
 <script>
-function copyEmail() {
-    const email = "rizalfahriirawan429@gmail.com"; // Ganti dengan email Anda
-    
-    navigator.clipboard.writeText(email).then(() => {
-        const btn = document.getElementById('copyEmailBtn');
-        const originalText = btn.innerText;
-        
-        // Ubah tampilan tombol saat berhasil
-        btn.innerText = "Copied! ✅";
-        btn.classList.add('copied');
-        
-        // Kembalikan ke semula setelah 2 detik
-        setTimeout(() => {
-            btn.innerText = originalText;
-            btn.classList.remove('copied');
-        }, 2000);
-    }).catch(err => {
-        console.error('Gagal menyalin: ', err);
-    });
-}
-// Inisialisasi ikon Lucide
+    // Inisialisasi ikon Lucide
     lucide.createIcons();
 
-    // Fungsi Copy Text (Tetap sama)
+    // Fungsi Copy Email
+    function copyEmail() {
+        const email = "rizalfahriirawan429@gmail.com"; 
+        
+        navigator.clipboard.writeText(email).then(() => {
+            const btn = document.getElementById('copyEmailBtn');
+            const originalText = btn.innerText;
+            
+            btn.innerText = "Copied! ✅";
+            btn.classList.add('copied');
+            
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.classList.remove('copied');
+            }, 2000);
+        }).catch(err => {
+            console.error('Gagal menyalin: ', err);
+        });
+    }
+
+    // Fungsi Copy Text untuk contact item
     function copyText(text, btn) {
         navigator.clipboard.writeText(text).then(() => {
             const originalText = btn.innerText;
@@ -346,6 +338,121 @@ function copyEmail() {
             }, 2000);
         });
     }
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu');
+    const navWrapper = document.getElementById('nav-wrapper');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    mobileMenuBtn.addEventListener('click', () => {
+        navWrapper.classList.toggle('active');
+        const isActive = navWrapper.classList.contains('active');
+        mobileMenuBtn.innerHTML = `<i data-lucide="${isActive ? 'x' : 'menu'}"></i>`;
+        lucide.createIcons();
+    });
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navWrapper.classList.contains('active')) {
+                navWrapper.classList.remove('active');
+                mobileMenuBtn.innerHTML = `<i data-lucide="menu"></i>`;
+                lucide.createIcons();
+            }
+        });
+    });
 </script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    // Auto-attach animation attributes dynamically for extreme WOW factor
+    document.querySelectorAll('.card, .service, .project-item, .contact-item-box, h2, h3, h4').forEach((el, i) => {
+        if (!el.hasAttribute('data-aos')) {
+            el.setAttribute('data-aos', 'fade-up');
+            // Stagger animation based on elements to create a wave effect
+            el.setAttribute('data-aos-delay', (i % 3) * 100);
+        }
+    });
+
+    AOS.init({
+        duration: 1000,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 50
+    });
+</script>
+
+<!-- Auto Typing effect for WOW factor -->
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+<!-- Vanilla-Tilt for 3D Holographic Cards -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+
+<!-- tsParticles for Star Constellation Background -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+<script>
+    // Typed.js
+    new Typed('#typed-role', {
+      strings: ['UI/UX Designer', 'Web Developer', 'Graphic Designer', 'Creative Developer'],
+      typeSpeed: 60,
+      backSpeed: 40,
+      backDelay: 2000,
+      loop: true,
+      cursorChar: '_'
+    });
+
+    // Vanilla-Tilt (apply to all glass cards except navbar)
+    if (window.matchMedia("(pointer: fine)").matches) {
+        VanillaTilt.init(document.querySelectorAll(".glass:not(.navbar)"), {
+            max: 5,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.15,
+        });
+
+    }
+
+    // Initialize tsParticles Constellation
+    tsParticles.load("tsparticles", {
+      fpsLimit: 60,
+      particles: {
+        color: { value: "#ffffff" },
+        links: {
+          color: "#a855f7",
+          distance: 150,
+          enable: true,
+          opacity: 0.2,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 1,
+          direction: "none",
+          random: false,
+          straight: false,
+          outModes: "out"
+        },
+        number: {
+          density: { enable: true, area: 800 },
+          value: 40
+        },
+        opacity: { value: 0.3 },
+        shape: { type: "circle" },
+        size: { value: { min: 1, max: 3 } }
+      },
+      interactivity: {
+        detectsOn: "window",
+        events: {
+          onHover: { enable: true, mode: "grab" },
+          resize: true
+        },
+        modes: {
+          grab: { distance: 200, links: { opacity: 0.5 } }
+        }
+      },
+      detectRetina: true
+    });
+</script>
+
 </body>
 </html>
