@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio Gallery | Rizal Fahri</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css?v=1.7">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .gallery-header h1 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-top: 10px;
+        }
+        .gallery-header p {
+            font-size: 16px;
+            font-weight: 700;
+            max-width: 650px;
+            margin: 10px auto 0;
+            color: var(--black);
+        }
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        .filter-btn {
+            padding: 8px 18px;
+            background: var(--white);
+            border: var(--border-width) solid var(--black);
+            font-weight: 900;
+            font-size: 13px;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 3px 3px 0px var(--black);
+            transition: 0.1s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--accent);
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px var(--black);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .gallery-item {
+            background: var(--white);
+            border: var(--border-width) solid var(--black);
+            box-shadow: 6px 6px 0px var(--black);
+            overflow: hidden;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .gallery-item:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0px var(--black);
+        }
+        
+        /* Web & UI/UX Cards use 1:1 Aspect Ratio */
+        .gallery-img-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-bottom: var(--border-width) solid var(--black);
+            cursor: pointer;
+            background: var(--bg);
+            display: block;
+        }
+        .gallery-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover .gallery-img-wrapper img {
+            transform: scale(1.05);
+        }
+        .gallery-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .gallery-item:hover .gallery-overlay,
+        .carousel-slide:hover .gallery-overlay {
+            opacity: 1;
+        }
+        .gallery-overlay span {
+            background: var(--accent);
+            color: var(--black);
+            font-weight: 900;
+            padding: 8px 16px;
+            border: 2px solid var(--black);
+            box-shadow: 3px 3px 0px var(--black);
+            text-transform: uppercase;
+            font-size: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .gallery-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .gallery-tag {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--black);
+            font-size: 11px;
+            font-weight: 900;
+            padding: 3px 10px;
+            border: 2px solid var(--black);
+            box-shadow: 2px 2px 0px var(--black);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .gallery-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        .gallery-content p {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--black);
+            line-height: 1.5;
+        }
+
+        /* --- GRAPHIC DESIGN CAROUSEL SLIDER USES 4:5 ASPECT RATIO --- */
+        .graphic-section-container {
+            margin-top: 40px;
+            background: var(--white);
+            border: var(--border-width) solid var(--black);
+            box-shadow: 6px 6px 0px var(--black);
+            padding: 25px;
+        }
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .slider-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .slider-btn {
+            background: var(--accent);
+            color: var(--black);
+            border: var(--border-width) solid var(--black);
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 3px 3px 0px var(--black);
+            font-weight: 900;
+            transition: 0.1s;
+        }
+        .slider-btn:hover {
+            background: var(--secondary);
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px var(--black);
+        }
+        .slider-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px var(--black);
+        }
+        .slide-counter {
+            font-weight: 900;
+            font-size: 13px;
+            padding: 8px 14px;
+            background: var(--bg);
+            border: 2px solid var(--black);
+            box-shadow: 2px 2px 0px var(--black);
+        }
+        .carousel-track-wrapper {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding-bottom: 10px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .carousel-track::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Graphic Designer Cards strictly 4:5 Aspect Ratio */
+        .carousel-slide {
+            flex: 0 0 calc(33.333% - 14px);
+            min-width: 240px;
+            scroll-snap-align: start;
+            position: relative;
+            aspect-ratio: 4 / 5;
+            height: auto;
+            border: var(--border-width) solid var(--black);
+            box-shadow: 4px 4px 0px var(--black);
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--bg);
+            transition: 0.2s ease;
+        }
+        .carousel-slide:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 7px 7px 0px var(--black);
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .carousel-slide:hover img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 900px) {
+            .carousel-slide {
+                flex: 0 0 calc(50% - 10px);
+                min-width: 200px;
+                aspect-ratio: 4 / 5;
+            }
+        }
+        @media (max-width: 600px) {
+            .carousel-slide {
+                flex: 0 0 85%;
+                aspect-ratio: 4 / 5;
+            }
+        }
+
+        /* --- LIGHTBOX MODAL WITH INTERACTIVE ARROWS --- */
+        .lightbox-modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.88);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .lightbox-modal.active {
+            display: flex;
+        }
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90vh;
+            background: var(--white);
+            border: var(--border-width) solid var(--black);
+            box-shadow: 8px 8px 0px var(--black);
+            position: relative;
+            padding: 20px 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            display: block;
+            border: 2px solid var(--black);
+            background: var(--bg);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: -15px; right: -15px;
+            background: var(--accent);
+            color: var(--black);
+            border: var(--border-width) solid var(--black);
+            width: 38px; height: 38px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 900; cursor: pointer;
+            box-shadow: 3px 3px 0px var(--black);
+            z-index: 2020;
+        }
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--accent);
+            color: var(--black);
+            border: var(--border-width) solid var(--black);
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 3px 3px 0px var(--black);
+            z-index: 2010;
+            transition: 0.1s;
+        }
+        .lightbox-prev { left: 10px; }
+        .lightbox-next { right: 10px; }
+        .lightbox-nav:hover {
+            background: var(--secondary);
+            transform: translateY(-50%) translate(-2px, -2px);
+            box-shadow: 5px 5px 0px var(--black);
+        }
+        .lightbox-counter {
+            margin-top: 12px;
+            font-weight: 900;
+            font-size: 13px;
+            background: var(--bg);
+            padding: 4px 14px;
+            border: 2px solid var(--black);
+            box-shadow: 2px 2px 0px var(--black);
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+    <header class="navbar glass">
+        <div class="logo text-gradient">Rizal Fahri</div>
+
+        <div class="header-actions">
+            <a href="index.html" class="btn outline" style="text-decoration: none;">
+                <i data-lucide="arrow-left" style="margin-right: 6px; width: 16px; height: 16px;"></i> Back to Home
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="gallery-header" data-aos="fade-down">
+            <span class="open-to-work-tag"><span class="pulse-dot"></span> Portfolio Gallery</span>
+            <h1 class="text-gradient">My Creative Portfolio 🖼️</h1>
+            <p>
+                A visual showcase of web development projects, UI/UX interface designs, & graphic media.
+            </p>
+        </section>
+
+        <!-- Category Filters -->
+        <div class="filter-container" data-aos="fade-up">
+            <button class="filter-btn active" onclick="filterGallery('all')">All Works</button>
+            <button class="filter-btn" onclick="filterGallery('web')">Web Development</button>
+            <button class="filter-btn" onclick="filterGallery('uiux')">UI/UX Design</button>
+            <button class="filter-btn" onclick="filterGallery('graphic')">Graphic Design</button>
+        </div>
+
+        <!-- Portfolio Web & UI/UX Gallery Grid (Ratio 1:1) -->
+        <div class="gallery-grid">
+            
+            <!-- WEB DEVELOPMENT 1: artapage.biz.id -->
+            <div class="gallery-item" data-category="web" data-aos="fade-up">
+                <a href="https://artapage.biz.id" target="_blank" rel="noopener noreferrer" class="gallery-img-wrapper">
+                    <img src="img/artapage.png" alt="artapage.biz.id">
+                    <div class="gallery-overlay"><span><i data-lucide="external-link"></i> Visit Website</span></div>
+                </a>
+                <div class="gallery-content">
+                    <div>
+                        <span class="gallery-tag">Web Development</span>
+                        <h3>artapage.biz.id</h3>
+                        <p>Platform layanan digital & web development profesional yang saya dirikan dan kembangkan secara penuh.</p>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <a href="https://artapage.biz.id" target="_blank" rel="noopener noreferrer" class="btn" style="width: 100%; text-decoration: none; padding: 8px 12px; font-size: 12px;">
+                            Visit Site <i data-lucide="external-link" style="margin-left: 6px; width: 14px; height: 14px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WEB DEVELOPMENT 2: Aplikasi Klasifikasi Ulasan -->
+            <div class="gallery-item" data-category="web" data-aos="fade-up" data-aos-delay="100">
+                <a href="https://klasifikasiulasan-accessbyakai.streamlit.app/" target="_blank" rel="noopener noreferrer" class="gallery-img-wrapper">
+                    <img src="img/Web Dev.png" alt="Aplikasi Klasifikasi Ulasan">
+                    <div class="gallery-overlay"><span><i data-lucide="external-link"></i> Visit Website</span></div>
+                </a>
+                <div class="gallery-content">
+                    <div>
+                        <span class="gallery-tag">Web Development</span>
+                        <h3>Aplikasi Klasifikasi Ulasan</h3>
+                        <p>Sistem berbasis web & NLP untuk analisis dan klasifikasi sentiment ulasan pengguna secara otomatis.</p>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <a href="https://klasifikasiulasan-accessbyakai.streamlit.app/" target="_blank" rel="noopener noreferrer" class="btn" style="width: 100%; text-decoration: none; padding: 8px 12px; font-size: 12px;">
+                            Visit Site <i data-lucide="external-link" style="margin-left: 6px; width: 14px; height: 14px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UI/UX DESIGN: Permifest 2024/2025 Figma Link -->
+            <div class="gallery-item" data-category="uiux" data-aos="fade-up" data-aos-delay="200">
+                <a href="https://www.figma.com/design/iWoaDqBZWLG7aKTeN2Ohsk/UI-UX-COMPETITION-%7C-HMPI-UPY?node-id=0-1&t=qcIzhTaEDErrctwC-1" target="_blank" rel="noopener noreferrer" class="gallery-img-wrapper">
+                    <img src="img/UX.png" alt="Project UI/UX Design">
+                    <div class="gallery-overlay"><span><i data-lucide="external-link"></i> Open Figma Link</span></div>
+                </a>
+                <div class="gallery-content">
+                    <div>
+                        <span class="gallery-tag" style="background: var(--accent);">UI/UX Design</span>
+                        <h3>Permifest 2024/2025 UI/UX</h3>
+                        <p>Desain antarmuka & prototyping interaktif pengalaman pengguna untuk kompetisi UI/UX HMPI UPY.</p>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <a href="https://www.figma.com/design/iWoaDqBZWLG7aKTeN2Ohsk/UI-UX-COMPETITION-%7C-HMPI-UPY?node-id=0-1&t=qcIzhTaEDErrctwC-1" target="_blank" rel="noopener noreferrer" class="btn" style="width: 100%; text-decoration: none; padding: 8px 12px; font-size: 12px;">
+                            Open Figma <i data-lucide="external-link" style="margin-left: 6px; width: 14px; height: 14px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- GRAPHIC DESIGN SECTION WITH SWIPABLE SLIDER CAROUSEL (ASPECT RATIO 4:5) -->
+        <div class="graphic-section-container" data-aos="fade-up">
+            <div class="slider-header">
+                <div>
+                    <span class="gallery-tag" style="background: var(--primary); color: white; margin-bottom: 5px;">Graphic Design</span>
+                    <h3 class="text-gradient" style="font-size: 1.5rem;">Graphic Design Gallery (Ratio 4:5) 🎨</h3>
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-btn" id="prevBtn" aria-label="Previous Image">
+                        <i data-lucide="chevron-left"></i>
+                    </button>
+                    <span class="slide-counter" id="slideCounter">1 / 7</span>
+                    <button class="slider-btn" id="nextBtn" aria-label="Next Image">
+                        <i data-lucide="chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="carousel-track-wrapper">
+                <div class="carousel-track" id="carouselTrack">
+                    
+                    <div class="carousel-slide" onclick="openLightbox('img/porto/1.png')">
+                        <img src="img/porto/1.png" alt="Graphic Design 1">
+                        <div class="gallery-overlay"><span><i data-lucide="maximize-2"></i> Zoom Image</span></div>
+                    </div>
+
+                    <div class="carousel-slide" onclick="openLightbox('img/porto/2.png')">
+                        <img src="img/porto/2.png" alt="Graphic Design 2">
+                        <div class="gallery-overlay"><span><i data-lucide="maximize-2"></i> Zoom Image</span></div>
+                    </div>
+
+                    <div class="carousel-slide" onclick="openLightbox('img/porto/3.png')">
+                        <img src="img/porto/3.png" alt="Graphic Design 3">
+                        <div class="gallery-overlay"><span><i data-lucide="maximize-2"></i> Zoom Image</span></div>
+                    </div>
+
+                    <div class="carousel-slide" onclick="openLightbox('img/porto/4.png')">
+                        <img src="img/porto/4.png" alt="Graphic Design 4">
+                        <div class="gallery-overlay"><span><i data-lucide="maximize-2"></i> Zoom Image</span></div>
+                    </div>
+
+                    <div class="carousel-slide" onclick="openLightbox('img/porto/5.png')">
+                        <img src="img/porto/5.png" alt="Graphic Design 5">
+                        <div class="gallery-overlay"><span><i data-lucide="maximize-2"></i> Zoom Image</span></div>
+                    </div>
+
+                    <div class="carousel-slide" onclick="openLightbox('img/porto/6.png')">
+                        <img src="img/porto/6.png" alt="Graphic Design 6">
+                        <div class="gallery-overlay"><span><i data-lucide="maximize-2"></i> Zoom Image</span></div>
+                    </div>
+
+                    <div class="carousel-slide" onclick="openLightbox('img/porto/7.png')">
+                        <img src="img/porto/7.png" alt="Graphic Design 7">
+                        <div class="gallery-overlay"><span><i data-lucide="maximize-2"></i> Zoom Image</span></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Home CTA -->
+        <div class="card glass" style="margin-top: 60px; text-align: center; background: var(--secondary);" data-aos="zoom-in">
+            <h2>Ingin Bekerja Sama Atau Membuat Proyek? 👋</h2>
+            <p style="font-weight: 800; margin: 10px 0 20px;">Saya siap membantu mewujudkan aplikasi web, UI/UX, dan desain kreatif Anda!</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://wa.me/62895380604290?text=Halo%20Rizal,%20saya%20tertarik%20bekerja%20sama!" class="talk" target="_blank" rel="noopener">
+                    Hubungi WhatsApp
+                </a>
+                <a href="index.html" class="btn outline">
+                    Kembali ke Halaman Utama
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <span>© 2024 Rizal Fahri • Portfolio Gallery</span>
+    </footer>
+
+</div>
+
+<!-- Lightbox Modal With Interactive Arrow Navigation -->
+<div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox(event)">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        
+        <button class="lightbox-nav lightbox-prev" onclick="prevLightboxImage(event)" aria-label="Previous image in modal">
+            <i data-lucide="chevron-left"></i>
+        </button>
+
+        <img src="" id="lightboxImg" alt="Preview Image">
+
+        <button class="lightbox-nav lightbox-next" onclick="nextLightboxImage(event)" aria-label="Next image in modal">
+            <i data-lucide="chevron-right"></i>
+        </button>
+
+        <div class="lightbox-counter" id="lightboxCounter">1 / 7</div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    lucide.createIcons();
+    AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true });
+
+    // Graphic Design images list
+    const graphicImages = [
+        'img/porto/1.png',
+        'img/porto/2.png',
+        'img/porto/3.png',
+        'img/porto/4.png',
+        'img/porto/5.png',
+        'img/porto/6.png',
+        'img/porto/7.png'
+    ];
+
+    let currentLightboxImages = graphicImages;
+    let currentLightboxIndex = 0;
+
+    // Filter functionality
+    function filterGallery(category) {
+        const items = document.querySelectorAll('.gallery-item');
+        const graphicSection = document.querySelector('.graphic-section-container');
+        const buttons = document.querySelectorAll('.filter-btn');
+
+        buttons.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        items.forEach(item => {
+            if (category === 'all' || item.getAttribute('data-category') === category) {
+                item.style.display = 'flex';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+
+        if (graphicSection) {
+            if (category === 'all' || category === 'graphic') {
+                graphicSection.style.display = 'block';
+            } else {
+                graphicSection.style.display = 'none';
+            }
+        }
+    }
+
+    // Carousel Slider Track Navigation
+    const track = document.getElementById('carouselTrack');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const counter = document.getElementById('slideCounter');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
+
+    function getSlideWidth() {
+        if (slides.length === 0) return 0;
+        return slides[0].offsetWidth + 20; // width + gap
+    }
+
+    if (prevBtn && nextBtn && track) {
+        nextBtn.addEventListener('click', () => {
+            track.scrollBy({ left: getSlideWidth(), behavior: 'smooth' });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            track.scrollBy({ left: -getSlideWidth(), behavior: 'smooth' });
+        });
+
+        track.addEventListener('scroll', () => {
+            const slideWidth = getSlideWidth();
+            if (slideWidth === 0) return;
+            const currentIndex = Math.round(track.scrollLeft / slideWidth) + 1;
+            const clampedIndex = Math.min(Math.max(currentIndex, 1), totalSlides);
+            counter.innerText = `${clampedIndex} / ${totalSlides}`;
+        });
+    }
+
+    // Lightbox Modal Functions & Arrow Navigation inside Modal
+    function openLightbox(imgSrc) {
+        currentLightboxImages = graphicImages;
+        currentLightboxIndex = graphicImages.indexOf(imgSrc);
+        if (currentLightboxIndex === -1) {
+            currentLightboxImages = [imgSrc];
+            currentLightboxIndex = 0;
+        }
+        updateLightbox();
+        document.getElementById('lightboxModal').classList.add('active');
+    }
+
+    function updateLightbox() {
+        const imgEl = document.getElementById('lightboxImg');
+        const counterEl = document.getElementById('lightboxCounter');
+        
+        imgEl.src = currentLightboxImages[currentLightboxIndex];
+        if (counterEl) {
+            counterEl.innerText = `${currentLightboxIndex + 1} / ${currentLightboxImages.length}`;
+        }
+    }
+
+    function prevLightboxImage(e) {
+        if (e) e.stopPropagation();
+        if (currentLightboxImages.length === 0) return;
+        currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxImages.length) % currentLightboxImages.length;
+        updateLightbox();
+    }
+
+    function nextLightboxImage(e) {
+        if (e) e.stopPropagation();
+        if (currentLightboxImages.length === 0) return;
+        currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxImages.length;
+        updateLightbox();
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightboxModal').classList.remove('active');
+    }
+
+    // Keyboard navigation inside lightbox
+    document.addEventListener('keydown', (e) => {
+        const modal = document.getElementById('lightboxModal');
+        if (modal && modal.classList.contains('active')) {
+            if (e.key === 'ArrowLeft') {
+                prevLightboxImage(e);
+            } else if (e.key === 'ArrowRight') {
+                nextLightboxImage(e);
+            } else if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        }
+    });
+</script>
+</body>
+</html>
